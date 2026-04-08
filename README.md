@@ -1,1 +1,197 @@
-# Kartu-ucapan
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Kamu ❤️</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: black;
+  color: white;
+  overflow: hidden;
+}
+
+/* OPENING */
+#opening {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+button {
+  padding: 15px 30px;
+  border: none;
+  background: red;
+  color: white;
+  border-radius: 30px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* CONTENT */
+#content {
+  display: none;
+}
+
+.section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+p {
+  margin-top: 10px;
+  opacity: 0.8;
+}
+
+/* TYPING */
+.typing {
+  border-right: 2px solid white;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* CHAT STYLE */
+.chat {
+  background: #1e1e1e;
+  padding: 15px;
+  border-radius: 15px;
+  margin: 10px;
+  max-width: 250px;
+}
+
+.me {
+  background: #25D366;
+  color: black;
+  align-self: flex-end;
+}
+
+/* IMAGE */
+img {
+  width: 220px;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+/* HEART */
+.heart {
+  position: fixed;
+  color: red;
+  animation: float 5s linear infinite;
+}
+
+@keyframes float {
+  0% {transform: translateY(100vh);}
+  100% {transform: translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3">
+</audio>
+
+<!-- OPENING -->
+<div id="opening">
+  <h1>🎁 Ada sesuatu untuk kamu...</h1>
+  <br>
+  <button onclick="start()">Buka Sekarang ❤️</button>
+</div>
+
+<!-- CONTENT -->
+<div id="content">
+
+  <div class="section">
+    <h1 class="typing" id="typing"></h1>
+  </div>
+
+  <div class="section">
+    <h1>Hai Ummi 🥺</h1>
+    <p>Ada sesuatu yang ingin aku sampaikan...</p>
+  </div>
+
+  <div class="section">
+    <div class="chat">Kamu lagi apa?</div>
+    <div class="chat me">Lagi mikirin kamu 😳</div>
+    <div class="chat">Ihh gombal 😭</div>
+  </div>
+
+  <div class="section">
+    <h1>Hari Ini Spesial</h1>
+    <p>Karena hari ini... kamu lahir ke dunia ❤️</p>
+  </div>
+
+  <div class="section">
+    <h1>Kenangan Kita</h1>
+    <img src="foto-kalian.jpg">
+  </div>
+
+  <div class="section">
+    <h1>Doaku Untukmu 🤲</h1>
+    <p>Semoga kamu selalu bahagia, sehat, dan selalu bersamaku...</p>
+  </div>
+
+  <div class="section">
+    <h1>I Love You ❤️</h1>
+    <p>Selamat ulang tahun ya cintaku...</p>
+  </div>
+
+</div>
+
+<script>
+function start() {
+  document.getElementById("opening").style.display = "none";
+  document.getElementById("content").style.display = "block";
+  document.body.style.overflow = "auto";
+  document.getElementById("music").play();
+
+  typeText("Selamat Ulang Tahun ❤️");
+}
+
+function typeText(text) {
+  let i = 0;
+  function typing() {
+    if (i < text.length) {
+      document.getElementById("typing").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typing, 80);
+    }
+  }
+  typing();
+}
+
+// love animation
+setInterval(() => {
+  let heart = document.createElement("div");
+  heart.innerHTML = "❤️";
+  heart.className = "heart";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 20 + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 5000);
+}, 300);
+</script>
+
+</body>
+</html>
