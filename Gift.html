@@ -3,50 +3,66 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday My Love ❤️</title>
+<title>For You ❤️</title>
 
 <style>
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background: black;
   color: white;
-  text-align: center;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
-section {
+.container {
   height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+button {
+  padding: 15px 30px;
+  border: none;
+  background: red;
+  color: white;
+  font-size: 18px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.section {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
 }
 
 h1 {
-  font-size: 3em;
-  animation: fadeIn 2s ease-in-out;
+  font-size: 2.5em;
 }
 
-p {
-  max-width: 80%;
-  font-size: 1.2em;
-  opacity: 0.8;
+.typing {
+  border-right: 2px solid white;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 img {
-  width: 200px;
+  width: 220px;
   border-radius: 20px;
   margin-top: 20px;
-  box-shadow: 0 0 20px rgba(255,255,255,0.3);
 }
 
-@keyframes fadeIn {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-
-/* Love floating */
 .heart {
   position: fixed;
   color: red;
@@ -62,54 +78,71 @@ img {
 
 <body>
 
-<!-- Musik -->
-<audio autoplay loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+<!-- MUSIC -->
+<audio id="music" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3">
 </audio>
 
-<section>
-  <h1>Happy Birthday ❤️</h1>
-  <p>Untuk kamu, orang paling spesial dalam hidupku...</p>
-</section>
+<!-- OPENING -->
+<div class="container" id="opening">
+  <h1>🎁 Ada sesuatu untuk kamu...</h1>
+  <button onclick="start()">Buka ❤️</button>
+</div>
 
-<section>
-  <h1>Hai Sayang 🥺</h1>
-  <p>
-    Hari ini bukan sekadar hari biasa...  
-    tapi hari dimana dunia diberi hadiah terindah — yaitu kamu.
-  </p>
-</section>
+<!-- CONTENT -->
+<div id="content" class="hidden">
 
-<section>
-  <h1>Aku Bersyukur</h1>
-  <p>
-    Terima kasih sudah hadir dalam hidupku,  
-    menemani hari-hariku, dan membuat semuanya terasa lebih berarti.
-  </p>
-</section>
+  <div class="section">
+    <h1 class="typing" id="text1"></h1>
+  </div>
 
-<section>
-  <h1>Kenangan Kita 💕</h1>
-  <img src="foto-kalian.jpg" alt="foto">
-  <p>Dan ini hanya sebagian kecil dari cerita kita...</p>
-</section>
+  <div class="section">
+    <h1>Hai Sayang 🥺</h1>
+    <p>Hari ini bukan hari biasa... tapi hari dimana dunia diberi hadiah terindah — yaitu kamu.</p>
+  </div>
 
-<section>
-  <h1>Doaku Untukmu 🤲</h1>
-  <p>
-    Semoga kamu selalu bahagia, sehat,  
-    dan semua impianmu tercapai.  
-    Aku akan selalu ada untukmu.
-  </p>
-</section>
+  <div class="section">
+    <h1>Aku Bersyukur</h1>
+    <p>Terima kasih sudah hadir dalam hidupku ❤️</p>
+  </div>
 
-<section>
-  <h1>I Love You ❤️</h1>
-  <p>Selamat ulang tahun ya, cintaku...</p>
-</section>
+  <div class="section">
+    <h1>Kenangan Kita</h1>
+    <img src="foto-kalian.jpg">
+  </div>
+
+  <div class="section">
+    <h1>I Love You ❤️</h1>
+    <p>Selamat ulang tahun ya cintaku...</p>
+  </div>
+
+</div>
 
 <script>
-// efek love jatuh
+function start() {
+  document.getElementById("opening").style.display = "none";
+  document.getElementById("content").classList.remove("hidden");
+  document.body.style.overflow = "auto";
+  document.getElementById("music").play();
+
+  typeText("Selamat Ulang Tahun ❤️");
+}
+
+// typing effect
+function typeText(text) {
+  let i = 0;
+  let speed = 80;
+  function typing() {
+    if (i < text.length) {
+      document.getElementById("text1").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typing, speed);
+    }
+  }
+  typing();
+}
+
+// love animation
 setInterval(() => {
   let heart = document.createElement("div");
   heart.innerHTML = "❤️";
@@ -118,11 +151,9 @@ setInterval(() => {
   heart.style.fontSize = Math.random() * 20 + 20 + "px";
   document.body.appendChild(heart);
 
-  setTimeout(() => {
-    heart.remove();
-  }, 5000);
+  setTimeout(() => heart.remove(), 5000);
 }, 300);
 </script>
 
 </body>
-</html>s
+</html>
