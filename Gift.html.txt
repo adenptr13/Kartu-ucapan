@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday My Love ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: black;
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-size: 3em;
+  animation: fadeIn 2s ease-in-out;
+}
+
+p {
+  max-width: 80%;
+  font-size: 1.2em;
+  opacity: 0.8;
+}
+
+img {
+  width: 200px;
+  border-radius: 20px;
+  margin-top: 20px;
+  box-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+/* Love floating */
+.heart {
+  position: fixed;
+  color: red;
+  animation: float 5s linear infinite;
+}
+
+@keyframes float {
+  0% {transform: translateY(100vh);}
+  100% {transform: translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Musik -->
+<audio autoplay loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
+<section>
+  <h1>Happy Birthday ❤️</h1>
+  <p>Untuk kamu, orang paling spesial dalam hidupku...</p>
+</section>
+
+<section>
+  <h1>Hai Sayang 🥺</h1>
+  <p>
+    Hari ini bukan sekadar hari biasa...  
+    tapi hari dimana dunia diberi hadiah terindah — yaitu kamu.
+  </p>
+</section>
+
+<section>
+  <h1>Aku Bersyukur</h1>
+  <p>
+    Terima kasih sudah hadir dalam hidupku,  
+    menemani hari-hariku, dan membuat semuanya terasa lebih berarti.
+  </p>
+</section>
+
+<section>
+  <h1>Kenangan Kita 💕</h1>
+  <img src="foto-kalian.jpg" alt="foto">
+  <p>Dan ini hanya sebagian kecil dari cerita kita...</p>
+</section>
+
+<section>
+  <h1>Doaku Untukmu 🤲</h1>
+  <p>
+    Semoga kamu selalu bahagia, sehat,  
+    dan semua impianmu tercapai.  
+    Aku akan selalu ada untukmu.
+  </p>
+</section>
+
+<section>
+  <h1>I Love You ❤️</h1>
+  <p>Selamat ulang tahun ya, cintaku...</p>
+</section>
+
+<script>
+// efek love jatuh
+setInterval(() => {
+  let heart = document.createElement("div");
+  heart.innerHTML = "❤️";
+  heart.className = "heart";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 20 + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 5000);
+}, 300);
+</script>
+
+</body>
+</html>s
